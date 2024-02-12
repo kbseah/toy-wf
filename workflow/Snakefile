@@ -2,10 +2,12 @@ from snakemake.utils import validate, min_version
 
 min_version("8.3")
 
-# conda:
-#     "envs/global.yaml"
+conda:
+    "envs/global.yaml"
 
-# import pandas as pd
+import pandas as pd
+
+pd.show_versions()
 
 rule all:
     input:
