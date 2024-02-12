@@ -1,0 +1,23 @@
+from snakemake.utils import validate, min_version
+
+min_version("8.3")
+
+# conda:
+#     "envs/global.yaml"
+
+# import pandas as pd
+
+rule all:
+    input:
+        expand("{prefix}.txt", prefix=["A","B","C"])
+
+
+rule touch_files:
+    output:
+        "{prefix}.txt"
+    conda:
+        "envs/black.yaml"
+    shell:
+        """
+        echo {wildcards.prefix} > {output}
+        """
